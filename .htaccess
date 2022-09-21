@@ -1,0 +1,5 @@
+options All -Indexes
+
+RewriteEngine on
+
+RewriteRule ^([-a-zA-Z0-9/]+)$ index.php?page=$pageNum
