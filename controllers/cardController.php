@@ -38,7 +38,53 @@ class CardController {
     // show card
     static public function ctrlShowCard($item, $value) {
         $table = "note";
-        $res = CardModel::mdlShowCard($table, $item, $value);
-        return $res;
+        $response = CardModel::mdlShowCard($table, $item, $value);
+        return $response;
+    }
+
+    // edit card
+    static public function ctrlEditCard() {
+        if(isset($_POST["editTitle"])) {
+            $table = "note";
+            $data = [
+                "title" => $_POST["editTitle"],
+                "description" => $_POST["editDescription"],
+                "id" => $_POST["idCard"]
+            ];
+
+            $response = CardModel::mdlEditCard($table, $data);
+
+            if($response == "ok") {
+                echo '<script>
+                    swal({
+                        type:"success",
+                        title:"note have created",
+                        showConfirmButton:true,
+                        confirmButtonText:"Finish",
+                        closeConfirm:false,
+                    }).then(result=>{
+                        if(result.value){
+                            window.location ="card";
+                        }
+                    })
+                
+                </script>';
+            }else {
+                echo '
+                    <script>
+                        swal({
+                            type:"error",
+                            title:"Card cann\'t change",
+                            showConfirmButton:true,
+                            closeOnConfirm:false
+                        }).then(result => {
+                            if(result.value){
+                                window.location = "card";
+                            }
+                        })
+                    </script>
+                ';
+            }
+        } 
     }
 }

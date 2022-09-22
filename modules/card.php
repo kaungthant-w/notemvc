@@ -21,7 +21,7 @@
                   <div class="card bg-secondary" style="height:200px;">
                       <div class="card-body text-white">
                           <h4 class="card-title"><?php echo $value["title"]; ?></h4>
-                          <span class="card-subtitle d-block mb-2 text-sm"><?php echo $value["created_at"]; ?></span>
+                          <span class="card-subtitle d-block mb-2 text-sm"><?php echo date("d M Y", strtotime($value["created_at"])) ; ?></span>
 
                           <p class="card-text"><?php echo $value["description"]; ?></p>
                           
@@ -29,7 +29,7 @@
                               <a href="#" class="card-link text-danger h4"><span><i class="fa-solid fa-trash"></i> </span>
                               </a>
 
-                              <a href="#" class="card-link text-warning h4" ><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i></span>
+                              <a href="#" class="card-link text-warning h4 btnEditCard" idCard="<?php echo $value['id']; ?>"><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i></span>
                               </a>
                           </div>
 
@@ -76,12 +76,11 @@
 </div>
 
 <?php 
-$addCard = new CardController();
-$addCard->ctrlCreateCard();
+  $addCard = new CardController();
+  $addCard->ctrlCreateCard();
 ?>
 
 <!-- edit  -->
-
 <div class="modal fade" id="edit">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -91,14 +90,15 @@ $addCard->ctrlCreateCard();
       </div>
       <div class="modal-body">
        <form action="" method="POST">
+        <input type="hidden" name="idCard" id="idCard">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="editTitle" class="form-control" required>
+                <input type="text" name="editTitle" id="editTitle" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" name="editDescription"  cols="30" rows="10" required></textarea>
+                <textarea class="form-control" name="editDescription" id="editDescription"  cols="30" rows="10" required></textarea>
             </div>
 
             <div class="modal-footer">
@@ -111,3 +111,8 @@ $addCard->ctrlCreateCard();
     </div>
   </div>
 </div>
+
+<?php 
+  $addCard = new CardController();
+  $addCard->ctrlEditCard();
+?>

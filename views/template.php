@@ -28,5 +28,6 @@
 <script src="views/js/jquery.js"></script>
 <script src="views/js/bootstrap.bundle.min.js"></script>
 <script src="views/js/note.js"></script>
+<script src="views/js/card.js"></script>
 </body>
 </html>
