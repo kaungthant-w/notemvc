@@ -26,7 +26,7 @@
                           <p class="card-text"><?php echo $value["description"]; ?></p>
                           
                           <div class="mt-3 text-end">
-                              <a href="#" class="card-link text-danger h4"><span><i class="fa-solid fa-trash"></i> </span>
+                              <a href="#" class="card-link text-danger h4 btnDeleteCard" idCard="<?php echo $value['id']; ?>"><span><i class="fa-solid fa-trash"></i> </span>
                               </a>
 
                               <a href="#" class="card-link text-warning h4 btnEditCard" idCard="<?php echo $value['id']; ?>"><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i></span>
@@ -115,4 +115,9 @@
 <?php 
   $addCard = new CardController();
   $addCard->ctrlEditCard();
+?>
+
+<?php 
+  $addCard = new CardController();
+  $addCard->ctrlDeleteCard();
 ?>

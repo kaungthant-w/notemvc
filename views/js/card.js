@@ -20,3 +20,22 @@ $(".btnEditCard").click(function(){
         }
     })
 })
+
+
+$(".btnDeleteCard").click(function(){
+    var idCard = $(this).attr("idCard");
+    swal({
+        title:"Are You sure to Delete?",
+        text:"if you click, it will delete",
+        type:"warning",
+        showCancelButton:true,
+        confirmButtonColor:"#3085d6",
+        cancelButtonColor:"#d33",
+        cancelButtonText:"Cancel",
+        confirmButtonText:"Delete",
+    }).then(result => {
+        if(result.value) {
+            window.location = "index.php?page=card&idCard="+idCard;
+        }
+    })
+})

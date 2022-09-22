@@ -87,4 +87,32 @@ class CardController {
             }
         } 
     }
+    
+    // delete card
+    static public function ctrlDeleteCard(){
+        if(isset($_GET["idCard"])) {
+            $table = "note";
+            $data = $_GET["idCard"];
+
+            $response = CardModel::mdlDelteCard($table, $data);
+
+            if($response == "ok") {
+                echo '
+                    <script>
+                        swal({
+                            type:"success",
+                            title:"note have been deleted",
+                            showConfirmButton:true,
+                            confirmButtonText:"Finish",
+                            closeOnConfirm:false
+                        }).then(result=>{
+                            if(result.value){
+                                window.location = "card";
+                            }
+                        })
+                    </script>
+                ';
+            }
+        }
+    }
 }
