@@ -1,28 +1,113 @@
-<div class="p-3 mt-2 h2">
+<div class="p-3 h2 mt-0 mt-sm-5 p-3">
     <a href="#" data-bs-toggle="modal" data-bs-target="#add"><i class="fa-solid fa-plus-circle text-success" title="Add Note"></i></a>
     Notes
 </div>
-<div class="my-5">
+
+<?php
+  $item = null;
+  $value = null;
+  $card = CardController::ctrlShowCard($item, $value);
+  // var_dump($card);
+?>
+
+<div class="my-3">
     <div class="row ml-3">
-        <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="card bg-secondary" style="height:200px;">
-                <div class="card-body text-white">
-                    <h4 class="card-title">Shopping
-                    </h4>
-                    <span class="card-subtitle d-block mb-2 text-sm">Mar 2 2022</span>
+      
+        <?php
+          if($card) {
+            foreach($card as $key=>$value) { ?>
 
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    
-                    <div class="mt-3">
-                    <a href="#" class="card-link text-danger h4"><span><i class="fa-solid fa-trash"></i></span>
-                    </a>
+              <div class="col-12 col-md-6 col-lg-4 mb-3">
+                  <div class="card bg-secondary" style="height:200px;">
+                      <div class="card-body text-white">
+                          <h4 class="card-title"><?php echo $value["title"]; ?></h4>
+                          <span class="card-subtitle d-block mb-2 text-sm"><?php echo $value["created_at"]; ?></span>
 
-                    <a href="#" class="card-link text-warning float-end h4" ><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit1"></i></span>
-                    </a>
-                    </div>
+                          <p class="card-text"><?php echo $value["description"]; ?></p>
+                          
+                          <div class="mt-3 text-end">
+                              <a href="#" class="card-link text-danger h4"><span><i class="fa-solid fa-trash"></i> </span>
+                              </a>
 
+                              <a href="#" class="card-link text-warning h4" ><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i></span>
+                              </a>
+                          </div>
+
+                      </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              <?php  
+            }
+          }
+        ?>
     </div>
+</div>
+
+
+<!-- add  -->
+<div class="modal fade" id="add">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD Note</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="" method="post">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="addTitle" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="addDescription"  cols="30" rows="10" required></textarea>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <input type="submit" class="btn btn-primary" value="Add">
+            </div>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<?php 
+$addCard = new CardController();
+$addCard->ctrlCreateCard();
+?>
+
+<!-- edit  -->
+
+<div class="modal fade" id="edit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="editTitle" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="editDescription"  cols="30" rows="10" required></textarea>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <input type="submit" class="btn btn-primary" value="Save">
+            </div>
+       </form>
+      </div>
+      
+    </div>
+  </div>
 </div>
