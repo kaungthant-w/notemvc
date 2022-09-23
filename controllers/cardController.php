@@ -20,7 +20,7 @@ class CardController {
             echo '<script>
                 swal({
                     type:"success",
-                    title:"note have created.",
+                    title:"Note have created.",
                     showConfirmButton:true,
                     confirmButtonText:"Finish",
                     closeConfirm:false,

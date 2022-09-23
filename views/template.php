@@ -11,7 +11,7 @@
         <script src="views/js/sweetalert2.all.js"></script>
 </head>
 <body class="app">
-    <div class="container bg-light h-full rounded pt-0 p-5">
+    <div class="container">
         <?php
             if(isset($_GET["page"])) {
                 if($_GET["page"] == "card") {

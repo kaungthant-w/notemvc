@@ -1,7 +1,7 @@
 <?php
 
 class templateController {
-    public function ctrlTemplate(){
+    public function ctrlTemplate() {
         include "views/template.php";
     }
 }
