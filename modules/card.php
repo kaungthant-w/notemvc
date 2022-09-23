@@ -25,11 +25,11 @@
 
                           <p class="card-text"><?php echo $value["description"]; ?></p>
                           
-                          <div class="mt-3 text-end">
-                              <a href="#" class="card-link text-danger h4 btnDeleteCard" idCard="<?php echo $value['id']; ?>"><span><i class="fa-solid fa-trash"></i> </span>
+                          <div class="mt-4 text-end">
+                              <a href="#" class="card-link text-danger h4 btnDeleteCard" idCard="<?php echo $value['id']; ?>"><i class="fa-solid fa-trash"></i>
                               </a>
 
-                              <a href="#" class="card-link text-warning h4 btnEditCard" idCard="<?php echo $value['id']; ?>"><span><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i></span>
+                              <a href="#" class="card-link text-warning me-2 h4 btnEditCard" idCard="<?php echo $value['id']; ?>"><i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit"></i>
                               </a>
                           </div>
 
