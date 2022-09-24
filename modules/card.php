@@ -1,4 +1,4 @@
-<div class="bg-light mt-5 m-auto w-full rounded py-3 px-5 ">
+<div class="bg-light my-5 m-auto w-full rounded py-3 px-5 ">
 <div class="h2 mt-0 mt-sm-5">
     <a href="#" data-bs-toggle="modal" data-bs-target="#add"><i class="fa-solid fa-plus-circle text-success" title="Add Note"></i></a>
     Notes
@@ -24,7 +24,7 @@
                           <h4 class="card-title"><?php echo $value["title"]; ?></h4>
                           <span class="card-subtitle d-block mb-2 text-sm"><?php echo date("d M Y", strtotime($value["created_at"])); ?></span>
 
-                          <p class="card-text"><?php echo $value["description"]; ?></p>
+                          <p class="card-text lh-lg"><?php echo substr($value["description"],0,60) ; ?> ... <span class="btnDetailCard" data-bs-toggle="modal" data-bs-target="#detail"><a href="#" class="text-decoration-none text-info"> Seemore</a></span> </p>
                           
                           <div class="mt-4 text-end">
                               <a href="#" class="card-link text-danger h4 btnDeleteCard" idCard="<?php echo $value['id']; ?>"><i class="fa-solid fa-trash"></i>
@@ -47,6 +47,7 @@
 
 <?php require_once "addCard.php"; ?>
 <?php require_once "editCard.php"; ?>
+<?php require_once "detailCard.php"; ?>
 
 
 
